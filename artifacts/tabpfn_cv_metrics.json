@@ -1,0 +1,71 @@
+{
+  "model": "TabPFNClassifier",
+  "dataset": "Crop_recommendation.csv",
+  "folds": 5,
+  "random_state": 42,
+  "fold_results": [
+    {
+      "fold": 1,
+      "accuracy": 0.990909090909091,
+      "macro_precision": 0.9919066440805572,
+      "macro_recall": 0.990909090909091,
+      "macro_f1": 0.9908691003415904,
+      "training_seconds": 1.82,
+      "inference_seconds": 142.11
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.9954545454545455,
+      "macro_precision": 0.9954545454545454,
+      "macro_recall": 0.9954545454545454,
+      "macro_f1": 0.9954545454545454,
+      "training_seconds": 1.88,
+      "inference_seconds": 145.57
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.9977272727272727,
+      "macro_precision": 0.9978354978354979,
+      "macro_recall": 0.9977272727272727,
+      "macro_f1": 0.997725851384388,
+      "training_seconds": 1.77,
+      "inference_seconds": 146.81
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.9977272727272727,
+      "macro_precision": 0.9978354978354979,
+      "macro_recall": 0.9977272727272727,
+      "macro_f1": 0.997725851384388,
+      "training_seconds": 3.33,
+      "inference_seconds": 154.58
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.9954545454545455,
+      "macro_precision": 0.9954545454545454,
+      "macro_recall": 0.9954545454545454,
+      "macro_f1": 0.9954545454545454,
+      "training_seconds": 1.45,
+      "inference_seconds": 114.04
+    }
+  ],
+  "summary": {
+    "accuracy": {
+      "mean": 0.9954545454545454,
+      "std": 0.0027835110713444818
+    },
+    "macro_precision": {
+      "mean": 0.9956973461321288,
+      "std": 0.002430571527187548
+    },
+    "macro_recall": {
+      "mean": 0.9954545454545454,
+      "std": 0.0027835110713444818
+    },
+    "macro_f1": {
+      "mean": 0.9954459788038914,
+      "std": 0.0027992678149956467
+    }
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "dataset": "Crop_recommendation.csv",
+  "evaluation_partition": "X_train (1,760 records)",
+  "held_out_test_records_isolated": 440,
+  "cv_folds": 5,
+  "classes_count": 22,
+  "class_names": [
+    "apple",
+    "banana",
+    "blackgram",
+    "chickpea",
+    "coconut",
+    "coffee",
+    "cotton",
+    "grapes",
+    "jute",
+    "kidneybeans",
+    "lentil",
+    "maize",
+    "mango",
+    "mothbeans",
+    "mungbean",
+    "muskmelon",
+    "orange",
+    "papaya",
+    "pigeonpeas",
+    "pomegranate",
+    "rice",
+    "watermelon"
+  ],
+  "comparison_table": {
+    "metrics": [
+      "Accuracy",
+      "Macro F1",
+      "Multiclass Log Loss",
+      "Multiclass Brier Score (Sum)",
+      "Multiclass Brier Score (Mean/class)",
+      "Top-1 ECE",
+      "Mean Top-1 Confidence"
+    ],
+    "uncalibrated_tabpfn": {
+      "accuracy": 0.993182,
+      "macro_f1": 0.993182,
+      "multiclass_log_loss": 0.014495,
+      "multiclass_brier_sum": 0.008772,
+      "multiclass_brier_mean_per_class": 0.000399,
+      "top1_ece": 0.002671,
+      "mean_top1_confidence": 0.992781
+    },
+    "temperature_scaling": {
+      "mean_learned_temperature": 0.8384,
+      "fold_temperatures": [
+        0.8802,
+        0.8748,
+        0.864,
+        0.7472,
+        0.8256
+      ],
+      "accuracy": 0.993182,
+      "macro_f1": 0.993182,
+      "multiclass_log_loss": 0.014285,
+      "multiclass_brier_sum": 0.008923,
+      "multiclass_brier_mean_per_class": 0.000406,
+      "top1_ece": 0.002014,
+      "mean_top1_confidence": 0.994304
+    },
+    "isotonic_calibration": {
+      "accuracy": 0.990341,
+      "macro_f1": 0.990361,
+      "multiclass_log_loss": 0.030451,
+      "multiclass_brier_sum": 0.010773,
+      "multiclass_brier_mean_per_class": 0.00049,
+      "top1_ece": 0.003596,
+      "mean_top1_confidence": 0.993915
+    }
+  },
+  "metric_definitions_and_limitations": {
+    "accuracy_and_macro_f1": "Measures categorical discrimination only. Completely insensitive to probability calibration; a prediction with probability 0.51 and 0.99 yields identical score.",
+    "multiclass_log_loss": "Information-theoretic cross-entropy loss. Strictly proper scoring rule, but heavily penalizes confident mistakes (approaching infinity as p -> 0 for true class).",
+    "multiclass_brier_score": "Mean squared probability error across all classes. Strictly proper scoring rule bounded in [0, 2]. Less sensitive to small probability tails than log loss, providing a stable measure of probability mean squared accuracy.",
+    "top1_expected_calibration_error": "Weighted average difference between top-1 confidence and top-1 accuracy across 10 bins. Limitation: Highly sensitive to bin boundaries. In highly accurate models (>99%), virtually all samples fall into the [0.9, 1.0] bin, leaving lower bins sparsely sampled."
+  },
+  "recommendation": "RECOMMENDATION: Retain original uncalibrated TabPFN model probabilities. Post-hoc calibration did not provide a meaningful improvement. Temperature scaling produced T ~ 0.84, confirming that uncalibrated TabPFN is already well-aligned with its empirical accuracy. Isotonic regression suffered from probability flattening across the 22 sparse classes, increasing log loss and Brier score. Therefore, retaining the deployed model's original probabilities with explicit decision-support disclaimers is methodologically superior.",
+  "recommend_retaining_original_model": true,
+  "ece_bin_breakdowns": {
+    "uncalibrated": {
+      "bins": [
+        {
+          "bin_range": [
+            0.0,
+            0.1
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.1,
+            0.2
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.2,
+            0.3
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.3,
+            0.4
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.4,
+            0.5
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.5,
+            0.6
+          ],
+          "count": 8,
+          "accuracy": 0.625,
+          "confidence": 0.5524,
+          "calibration_error": 0.0726
+        },
+        {
+          "bin_range": [
+            0.6,
+            0.7
+          ],
+          "count": 9,
+          "accuracy": 0.5556,
+          "confidence": 0.6398,
+          "calibration_error": 0.0842
+        },
+        {
+          "bin_range": [
+            0.7,
+            0.8
+          ],
+          "count": 7,
+          "accuracy": 0.5714,
+          "confidence": 0.7485,
+          "calibration_error": 0.177
+        },
+        {
+          "bin_range": [
+            0.8,
+            0.9
+          ],
+          "count": 10,
+          "accuracy": 0.9,
+          "confidence": 0.8271,
+          "calibration_error": 0.0729
+        },
+        {
+          "bin_range": [
+            0.9,
+            1.0
+          ],
+          "count": 1726,
+          "accuracy": 0.9994,
+          "confidence": 0.9986,
+          "calibration_error": 0.0008
+        }
+      ]
+    },
+    "temperature_scaling": {
+      "bins": [
+        {
+          "bin_range": [
+            0.0,
+            0.1
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.1,
+            0.2
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.2,
+            0.3
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.3,
+            0.4
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.4,
+            0.5
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.5,
+            0.6
+          ],
+          "count": 7,
+          "accuracy": 0.5714,
+          "confidence": 0.5594,
+          "calibration_error": 0.012
+        },
+        {
+          "bin_range": [
+            0.6,
+            0.7
+          ],
+          "count": 8,
+          "accuracy": 0.5,
+          "confidence": 0.6449,
+          "calibration_error": 0.1449
+        },
+        {
+          "bin_range": [
+            0.7,
+            0.8
+          ],
+          "count": 6,
+          "accuracy": 0.5,
+          "confidence": 0.7471,
+          "calibration_error": 0.2471
+        },
+        {
+          "bin_range": [
+            0.8,
+            0.9
+          ],
+          "count": 11,
+          "accuracy": 0.9091,
+          "confidence": 0.8454,
+          "calibration_error": 0.0637
+        },
+        {
+          "bin_range": [
+            0.9,
+            1.0
+          ],
+          "count": 1728,
+          "accuracy": 0.9994,
+          "confidence": 0.9995,
+          "calibration_error": 0.0001
+        }
+      ]
+    },
+    "isotonic": {
+      "bins": [
+        {
+          "bin_range": [
+            0.0,
+            0.1
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.1,
+            0.2
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.2,
+            0.3
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.3,
+            0.4
+          ],
+          "count": 0,
+          "accuracy": null,
+          "confidence": null,
+          "calibration_error": 0.0
+        },
+        {
+          "bin_range": [
+            0.4,
+            0.5
+          ],
+          "count": 2,
+          "accuracy": 0.0,
+          "confidence": 0.5,
+          "calibration_error": 0.5
+        },
+        {
+          "bin_range": [
+            0.5,
+            0.6
+          ],
+          "count": 7,
+          "accuracy": 0.2857,
+          "confidence": 0.5601,
+          "calibration_error": 0.2744
+        },
+        {
+          "bin_range": [
+            0.6,
+            0.7
+          ],
+          "count": 8,
+          "accuracy": 0.5,
+          "confidence": 0.6289,
+          "calibration_error": 0.1289
+        },
+        {
+          "bin_range": [
+            0.7,
+            0.8
+          ],
+          "count": 9,
+          "accuracy": 0.6667,
+          "confidence": 0.7418,
+          "calibration_error": 0.0751
+        },
+        {
+          "bin_range": [
+            0.8,
+            0.9
+          ],
+          "count": 8,
+          "accuracy": 0.875,
+          "confidence": 0.8726,
+          "calibration_error": 0.0024
+        },
+        {
+          "bin_range": [
+            0.9,
+            1.0
+          ],
+          "count": 1726,
+          "accuracy": 0.9988,
+          "confidence": 0.9998,
+          "calibration_error": 0.001
+        }
+      ]
+    }
+  }
+}
