@@ -1,63 +1,160 @@
 
 from pathlib import Path
+
 import pandas as pd
 
-INPUT_FILE = Path("data/raw/crop_production.csv")
-OUTPUT_DIR = Path("data/processed")
+
+# =====================================================
+# PATHS
+# =====================================================
+
+BASE_DIR = Path(__file__).resolve().parent
+
+INPUT_FILE = BASE_DIR / "data" / "raw" / "crop_production.csv"
+OUTPUT_DIR = BASE_DIR / "data" / "processed"
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+
+# =====================================================
+# LOAD DATASET
+# =====================================================
+
+if not INPUT_FILE.exists():
+    raise FileNotFoundError(f"Dataset not found: {INPUT_FILE}")
+
 df = pd.read_csv(INPUT_FILE)
 
-# Standardize text fields without changing crop names themselves.
-text_columns = ["State_Name", "District_Name", "Season", "Crop"]
+required_columns = [
+    "State_Name",
+    "District_Name",
+    "Crop_Year",
+    "Season",
+    "Crop",
+    "Production",
+]
+
+missing_columns = set(required_columns) - set(df.columns)
+
+if missing_columns:
+    raise ValueError(
+        f"Missing required columns: {sorted(missing_columns)}"
+    )
+
+
+# =====================================================
+# CLEAN DATA
+# =====================================================
+
+text_columns = [
+    "State_Name",
+    "District_Name",
+    "Season",
+    "Crop",
+]
+
 for column in text_columns:
     df[column] = df[column].astype("string").str.strip()
 
-# Keep the original dataset unchanged. Exclude 2015 only from this
-# analysis copy because its coverage is much smaller than prior years.
-historical = df[df["Crop_Year"] < 2015].copy()
+df["Crop_Year"] = pd.to_numeric(
+    df["Crop_Year"],
+    errors="coerce",
+)
 
-# Production-based analysis requires a known production value.
-known_production = historical[historical["Production"].notna()].copy()
+df["Production"] = pd.to_numeric(
+    df["Production"],
+    errors="coerce",
+)
 
-# Separate summary/aggregate labels from individual crop labels.
+
+# =====================================================
+# HISTORICAL DATA FILTERING
+# =====================================================
+
+# Exclude 2015 and later from this analysis copy.
+historical = df[
+    df["Crop_Year"].notna()
+    & (df["Crop_Year"] < 2015)
+].copy()
+
+# Retain only records with known production.
+known_production = historical[
+    historical["Production"].notna()
+].copy()
+
+
+# =====================================================
+# SEPARATE AGGREGATE AND INDIVIDUAL CROPS
+# =====================================================
+
 aggregate_labels = {
-    "Oilseeds total",
-    "Pulses total",
-    "Total foodgrain",
+    "oilseeds total",
+    "pulses total",
+    "total foodgrain",
 }
 
-# Some labels beginning with "Other" are broad categories too.
+crop_names = known_production["Crop"].str.casefold()
+
 aggregate_mask = (
-    known_production["Crop"].str.lower().isin(
-        {label.lower() for label in aggregate_labels}
-    )
-    | known_production["Crop"].str.lower().str.startswith("other ")
-    | known_production["Crop"].str.lower().str.startswith("other")
+    crop_names.isin(aggregate_labels)
+    | crop_names.str.startswith("other", na=False)
 )
 
-aggregate_records = known_production[aggregate_mask].copy()
-crop_records = known_production[~aggregate_mask].copy()
+aggregate_records = known_production[
+    aggregate_mask
+].copy()
 
-# Save separate analysis files.
+crop_records = known_production[
+    ~aggregate_mask
+].copy()
+
+
+# =====================================================
+# SAVE OUTPUT FILES
+# =====================================================
+
 known_production.to_csv(
-    OUTPUT_DIR / "historical_production_known.csv", index=False
-)
-crop_records.to_csv(
-    OUTPUT_DIR / "historical_individual_crop_records.csv", index=False
-)
-aggregate_records.to_csv(
-    OUTPUT_DIR / "historical_aggregate_crop_records.csv", index=False
+    OUTPUT_DIR / "historical_production_known.csv",
+    index=False,
 )
 
-print("=== HISTORICAL DATA PREPARATION ===")
+crop_records.to_csv(
+    OUTPUT_DIR / "historical_individual_crop_records.csv",
+    index=False,
+)
+
+aggregate_records.to_csv(
+    OUTPUT_DIR / "historical_aggregate_crop_records.csv",
+    index=False,
+)
+
+
+# =====================================================
+# SUMMARY
+# =====================================================
+
+print("\n=== HISTORICAL DATA PREPARATION ===")
+
 print(f"Original records: {len(df):,}")
 print(f"Records before 2015: {len(historical):,}")
 print(f"Records with known production: {len(known_production):,}")
 print(f"Individual crop records: {len(crop_records):,}")
 print(f"Aggregate/broad-category records: {len(aggregate_records):,}")
-print(f"Zero-production records retained: {(known_production['Production'] == 0).sum():,}")
-print(f"Years included: {historical['Crop_Year'].min()}–{historical['Crop_Year'].max()}")
-print(f"Output directory: {OUTPUT_DIR.resolve()}")
+
+print(
+    "Zero-production records retained: "
+    f"{(known_production['Production'] == 0).sum():,}"
+)
+
+if not historical.empty:
+    print(
+        f"Years included: "
+        f"{int(historical['Crop_Year'].min())}–"
+        f"{int(historical['Crop_Year'].max())}"
+    )
+else:
+    print("Years included: No valid historical records")
+
+print(f"Output directory: {OUTPUT_DIR}")
+
 print("\nPreparation complete.")

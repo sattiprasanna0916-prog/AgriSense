@@ -60,7 +60,7 @@ export default function About() {
           <span>agricultural decision support.</span>
         </h1>
         <p>
-          AgriSense is an academic decision-support prototype combining modern
+          AgriSmart is an academic decision-support prototype combining modern
           tabular foundation models, explainable AI, empirical distribution safeguards,
           and regional production history to investigate agricultural suitability responsibly.
         </p>
@@ -91,7 +91,7 @@ export default function About() {
           <span className="about-eyebrow">ARCHITECTURAL PILLARS</span>
           <h2>Integrated Decision Support Modules</h2>
           <p>
-            AgriSense brings together prediction, explainability, safety guardrails, and regional analytics.
+            AgriSmart brings together prediction, explainability, safety guardrails, and regional analytics.
           </p>
         </div>
 
@@ -149,7 +149,7 @@ export default function About() {
           <h2>Three-Level Input Reliability Architecture</h2>
           <p>
             Machine learning models should not silently hallucinate on unfamiliar or impossible inputs.
-            AgriSense implements an empirical multi-level policy derived via leakage-free cross-validation:
+            AgriSmart implements an empirical multi-level policy derived via leakage-free cross-validation:
           </p>
         </div>
 

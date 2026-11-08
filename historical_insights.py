@@ -4,37 +4,104 @@ from pathlib import Path
 
 import pandas as pd
 
-DATA_FILE = Path("data/processed/historical_individual_crop_records.csv")
 
+# =====================================================
+# CONFIGURATION
+# =====================================================
+
+BASE_DIR = Path(__file__).resolve().parent
+
+DATA_FILE = (
+    BASE_DIR
+    / "data"
+    / "processed"
+    / "historical_individual_crop_records.csv"
+)
+
+REQUIRED_COLUMNS = {
+    "State_Name",
+    "District_Name",
+    "Crop_Year",
+    "Season",
+    "Crop",
+    "Area",
+    "Production",
+}
+
+
+# =====================================================
+# LOAD HISTORICAL DATA
+# =====================================================
 
 @lru_cache(maxsize=1)
 def load_historical_data():
-    """Load the prepared historical dataset once per application process."""
+
     if not DATA_FILE.exists():
         raise FileNotFoundError(
-            f"Historical dataset not found: {DATA_FILE.resolve()}"
+            f"Historical dataset not found: {DATA_FILE}"
         )
 
     df = pd.read_csv(DATA_FILE)
 
-    required = {
-        "State_Name",
-        "District_Name",
-        "Crop_Year",
-        "Season",
-        "Crop",
-        "Area",
-        "Production",
-    }
-    missing = required - set(df.columns)
+    missing = REQUIRED_COLUMNS - set(df.columns)
 
     if missing:
         raise ValueError(
-            f"Historical dataset is missing columns: {sorted(missing)}"
+            f"Historical dataset is missing columns: "
+            f"{sorted(missing)}"
         )
+
+    # Convert numeric columns safely.
+    for column in ["Crop_Year", "Area", "Production"]:
+        df[column] = pd.to_numeric(
+            df[column],
+            errors="coerce"
+        )
+
+    # Remove records without essential category information.
+    for column in [
+        "State_Name",
+        "District_Name",
+        "Season",
+        "Crop",
+    ]:
+        df[column] = df[column].astype("string").str.strip()
 
     return df
 
+
+# =====================================================
+# VALIDATION AND FILTERING
+# =====================================================
+
+def validate_inputs(**kwargs):
+
+    for name, value in kwargs.items():
+
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(
+                f"{name} must be a non-empty string."
+            )
+
+
+def filter_records(df, state, district, season):
+
+    return df[
+        df["State_Name"].str.casefold().eq(
+            state.strip().casefold()
+        )
+        & df["District_Name"].str.casefold().eq(
+            district.strip().casefold()
+        )
+        & df["Season"].str.casefold().eq(
+            season.strip().casefold()
+        )
+    ]
+
+
+# =====================================================
+# DISTRICT CROP RANKING
+# =====================================================
 
 def get_district_crop_ranking(
     state: str,
@@ -42,19 +109,21 @@ def get_district_crop_ranking(
     season: str,
     limit: int = 10,
 ):
-    """Rank recorded crops by total production for a district and season."""
+
+    validate_inputs(
+        state=state,
+        district=district,
+        season=season,
+    )
+
+    if not isinstance(limit, int) or not 1 <= limit <= 50:
+        raise ValueError("limit must be an integer between 1 and 50")
+
     df = load_historical_data()
 
-    if not 1 <= limit <= 50:
-        raise ValueError("limit must be between 1 and 50")
-
-    filtered = df[
-        df["State_Name"].str.casefold().eq(state.strip().casefold())
-        & df["District_Name"].str.casefold().eq(
-            district.strip().casefold()
-        )
-        & df["Season"].str.casefold().eq(season.strip().casefold())
-    ]
+    filtered = filter_records(
+        df, state, district, season
+    )
 
     if filtered.empty:
         return {
@@ -73,7 +142,11 @@ def get_district_crop_ranking(
             total_area=("Area", "sum"),
             years_recorded=("Crop_Year", "nunique"),
         )
-        .sort_values("total_production", ascending=False)
+        .sort_values(
+            "total_production",
+            ascending=False,
+            na_position="last",
+        )
         .head(limit)
     )
 
@@ -82,7 +155,8 @@ def get_district_crop_ranking(
         "district": district,
         "season": season,
         "years_covered": sorted(
-            int(year) for year in filtered["Crop_Year"].dropna().unique()
+            int(year)
+            for year in filtered["Crop_Year"].dropna().unique()
         ),
         "crops": ranking.to_dict(orient="records"),
         "message": (
@@ -92,22 +166,34 @@ def get_district_crop_ranking(
     }
 
 
+# =====================================================
+# CROP PRODUCTION TREND
+# =====================================================
+
 def get_crop_production_trend(
     state: str,
     district: str,
     crop: str,
     season: str,
 ):
-    """Return yearly recorded production and area for one crop."""
+
+    validate_inputs(
+        state=state,
+        district=district,
+        crop=crop,
+        season=season,
+    )
+
     df = load_historical_data()
 
-    filtered = df[
-        df["State_Name"].str.casefold().eq(state.strip().casefold())
-        & df["District_Name"].str.casefold().eq(
-            district.strip().casefold()
+    filtered = filter_records(
+        df, state, district, season
+    )
+
+    filtered = filtered[
+        filtered["Crop"].str.casefold().eq(
+            crop.strip().casefold()
         )
-        & df["Crop"].str.casefold().eq(crop.strip().casefold())
-        & df["Season"].str.casefold().eq(season.strip().casefold())
     ]
 
     if filtered.empty:
@@ -129,19 +215,22 @@ def get_crop_production_trend(
         .sort_values("Crop_Year")
     )
 
+    trend = [
+        {
+            "year": int(row.Crop_Year),
+            "total_production": float(row.total_production),
+            "total_area": float(row.total_area),
+        }
+        for row in yearly.itertuples(index=False)
+        if pd.notna(row.Crop_Year)
+    ]
+
     return {
         "state": state,
         "district": district,
         "crop": crop,
         "season": season,
-        "trend": [
-            {
-                "year": int(row.Crop_Year),
-                "total_production": float(row.total_production),
-                "total_area": float(row.total_area),
-            }
-            for row in yearly.itertuples(index=False)
-        ],
+        "trend": trend,
         "message": (
             "Historical trends do not predict future production "
             "and may reflect incomplete reporting."

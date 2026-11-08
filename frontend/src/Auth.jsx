@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./Auth.css";
 
-const API_URL = "http://127.0.0.1:8000";
-
+	import API_URL from "./api";
 export default function Auth({ onLogin }) {
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
@@ -92,7 +91,7 @@ export default function Auth({ onLogin }) {
             {mode === "login" ? (
               <>Welcome <span>back.</span></>
             ) : (
-              <>Start with <span>AgriSense.</span></>
+              <>Start with <span>AgriSmart.</span></>
             )}
           </h1>
           <p>
@@ -177,7 +176,7 @@ export default function Auth({ onLogin }) {
                 <span className="auth-mini-spinner" /> Signing in...
               </span>
             ) : mode === "login" ? (
-              "Sign In to AgriSense →"
+              "Sign In to AgriSmart →"
             ) : (
               "Create My Account →"
             )}
