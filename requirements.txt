@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+email-validator
+scikit-learn
+pandas
+numpy
+joblib
+matplotlib
+shap
+tabpfn
+python-dotenv
+sqlalchemy
+pyjwt
+pwdlib[argon2]
+google-genai

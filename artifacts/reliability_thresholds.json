@@ -1,0 +1,34 @@
+{
+  "dataset": "Crop_recommendation.csv",
+  "k_neighbors": 5,
+  "cv_folds": 5,
+  "random_state": 42,
+  "training_records": 1760,
+  "test_records": 440,
+  "out_of_fold_distance_percentiles": {
+    "p50": 0.5450581106640466,
+    "p75": 0.6635111339167274,
+    "p90": 0.8106249101881631,
+    "p95": 0.9157562212607394,
+    "p97_5": 1.0333632792404785,
+    "p99": 1.1703001595898306,
+    "p99_5": 1.2177034895991654,
+    "p99_8": 1.2875980103918072,
+    "max": 1.405613107542415
+  },
+  "iqr": 0.2159,
+  "tukey_mild_fence_q75_plus_1_5_iqr": 0.9874,
+  "tukey_extreme_fence_q75_plus_3_0_iqr": 1.3112,
+  "selected_thresholds": {
+    "threshold_unusual": 0.9158,
+    "threshold_severe": 3.0
+  },
+  "empirical_test_set_evaluation": {
+    "test_sample_count": 440,
+    "test_max_distance": 1.3619,
+    "test_mean_distance": 0.5383,
+    "false_warning_rate_at_unusual_threshold_pct": 2.73,
+    "false_rejection_rate_at_severe_threshold_pct": 0.0
+  },
+  "notes": "Thresholds were derived exclusively from out-of-fold training distributions to prevent leakage. The held-out test split confirms low false-warning (2.7%) and zero false-rejection (0.0%) rates."
+}

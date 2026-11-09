@@ -1,0 +1,1014 @@
+/* ==========================================================
+   AGRISMART - AGRIASSIST
+   Light Sage Green Interface
+   ========================================================== */
+
+.agriassist-page {
+  width: 100%;
+  color: #263d2e;
+  padding-bottom: 24px;
+}
+
+/* ================= PAGE HEADING ================= */
+
+.agriassist-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.agriassist-heading-content {
+  max-width: 780px;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #26935c;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.heading-eyebrow-icon {
+  font-size: 1rem;
+}
+
+.agriassist-heading h1 {
+  color: #183b2a;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.agriassist-heading h1 span {
+  color: #239b62;
+}
+
+.agriassist-heading p {
+  color: #687b6d;
+  font-size: 0.98rem;
+  max-width: 700px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.agriassist-heading-icon {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #e4f2e7;
+  border: 1px solid #d4e8d8;
+  border-radius: 25px;
+  font-size: 2.7rem;
+  transform: rotate(4deg);
+}
+
+/* ================= MAIN LAYOUT ================= */
+
+.agriassist-layout {
+  display: grid;
+  grid-template-columns: minmax(270px, 330px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+/* ================= CONTEXT PANEL ================= */
+
+.agriassist-context-panel {
+  padding: 23px;
+  background: #ffffff;
+  border: 1px solid #dce9df;
+  border-radius: 19px;
+  box-shadow: 0 5px 22px rgba(35, 75, 48, 0.045);
+}
+
+.context-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.context-heading-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: #239b62;
+  background: #e8f5ec;
+  border-radius: 12px;
+  font-size: 1.5rem;
+}
+
+.context-card-header h3 {
+  color: #183b2a;
+  font-size: 1.05rem;
+  margin: 0 0 3px;
+}
+
+.context-card-header p {
+  color: #829589;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.context-grounding-note {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 21px;
+  background: #f0f8f2;
+  border: 1px solid #dfede2;
+  border-radius: 11px;
+}
+
+.grounding-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #239b62;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.context-grounding-note p {
+  color: #587161;
+  font-size: 0.77rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ================= CONTEXT INPUTS ================= */
+
+.context-inputs-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.context-inputs-column label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #405449;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.context-inputs-column input,
+.context-inputs-column select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  color: #263d2e;
+  background: #f8faf8;
+  border: 1px solid #dce7de;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.context-inputs-column input:focus,
+.context-inputs-column select:focus {
+  border-color: #239b62;
+  box-shadow: 0 0 0 3px rgba(35, 155, 98, 0.1);
+}
+
+.context-inputs-column select option {
+  background: #ffffff;
+  color: #263d2e;
+}
+
+/* ================= SUGGESTED PROMPTS ================= */
+
+.agriassist-prompts-section {
+  padding-top: 20px;
+  border-top: 1px solid #e6eee7;
+}
+
+.prompts-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.prompts-heading h4 {
+  color: #294a36;
+  font-size: 0.9rem;
+  margin: 0 0 4px;
+}
+
+.prompts-heading p {
+  color: #91a095;
+  font-size: 0.74rem;
+  margin: 0;
+}
+
+.prompts-count {
+  padding: 5px 8px;
+  color: #239b62;
+  background: #eaf5ed;
+  border-radius: 7px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.prompt-chip-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px;
+  text-align: left;
+  color: #405449;
+  background: #f8faf8;
+  border: 1px solid #e1ebe3;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.prompt-chip-btn:hover {
+  background: #eff8f1;
+  border-color: #a8d7b7;
+  transform: translateY(-1px);
+}
+
+.prompt-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #eaf4ec;
+  border-radius: 9px;
+  font-size: 1rem;
+}
+
+.prompt-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 4px;
+}
+
+.prompt-text strong {
+  color: #294a36;
+  font-size: 0.79rem;
+}
+
+.prompt-text small {
+  color: #829589;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.prompt-arrow {
+  color: #8aa393;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.prompt-chip-btn:hover .prompt-arrow {
+  color: #239b62;
+  transform: translate(2px, -2px);
+}
+
+/* ================= HISTORY NOTE ================= */
+
+.context-history-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px;
+  margin-top: 22px;
+  background: #f2f6ee;
+  border-radius: 11px;
+}
+
+.context-history-note > span {
+  font-size: 1.2rem;
+}
+
+.context-history-note strong {
+  display: block;
+  color: #385c40;
+  font-size: 0.77rem;
+  margin-bottom: 4px;
+}
+
+.context-history-note p {
+  color: #829589;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ================= CHAT CARD ================= */
+
+.agriassist-chat-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 700px;
+  background: #ffffff;
+  border: 1px solid #dce9df;
+  border-radius: 19px;
+  box-shadow: 0 5px 22px rgba(35, 75, 48, 0.055);
+  overflow: hidden;
+}
+
+/* ================= CHAT TOPBAR ================= */
+
+.agriassist-chat-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 22px;
+  background: #ffffff;
+  border-bottom: 1px solid #e7eee8;
+}
+
+.chat-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-profile-avatar {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  background: #e8f5ec;
+  border: 1px solid #d5e9da;
+  border-radius: 13px;
+  font-size: 1.35rem;
+}
+
+.chat-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.chat-profile-info strong {
+  color: #183b2a;
+  font-size: 0.98rem;
+}
+
+.chat-profile-info > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #829589;
+  font-size: 0.72rem;
+}
+
+.agriassist-status-dot {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #2bbd72;
+  box-shadow: 0 0 7px rgba(43, 189, 114, 0.4);
+}
+
+.chat-model-info {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  color: #4b795b;
+  background: #eff7f0;
+  border: 1px solid #e0ede2;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.model-status-icon {
+  color: #239b62;
+}
+
+/* ================= MESSAGES ================= */
+
+.agriassist-messages-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 22px;
+  overflow-y: auto;
+  min-height: 420px;
+  max-height: 540px;
+  background: #fbfdfb;
+  scrollbar-width: thin;
+  scrollbar-color: #c8dccd transparent;
+}
+
+.agriassist-messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.agriassist-messages-container::-webkit-scrollbar-thumb {
+  background: #c8dccd;
+  border-radius: 10px;
+}
+
+.chat-date-label {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.chat-date-label span {
+  padding: 5px 11px;
+  color: #91a095;
+  background: #f0f5f0;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+/* ================= MESSAGE ROWS ================= */
+
+.chat-message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  max-width: 88%;
+}
+
+.chat-message-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chat-message-row.assistant {
+  align-self: flex-start;
+}
+
+.chat-avatar {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #eaf5ed;
+  border: 1px solid #dcebe0;
+  border-radius: 50%;
+  font-size: 0.95rem;
+}
+
+.chat-message-row.user .chat-avatar {
+  background: #e8eee9;
+  border-color: #dce5de;
+}
+
+/* ================= MESSAGE CONTENT ================= */
+
+.chat-bubble-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 6px;
+}
+
+.chat-message-row.user .chat-bubble-content {
+  align-items: flex-end;
+}
+
+.chat-message-name {
+  color: #8a9b8f;
+  font-size: 0.69rem;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.chat-bubble {
+  padding: 13px 16px;
+  border-radius: 15px;
+  font-size: 0.87rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Assistant Bubble */
+
+.chat-message-row.assistant .chat-bubble {
+  color: #304638;
+  background: #ffffff;
+  border: 1px solid #e0eae2;
+  border-top-left-radius: 4px;
+  box-shadow: 0 2px 6px rgba(35, 75, 48, 0.025);
+}
+
+/* User Bubble */
+
+.chat-message-row.user .chat-bubble {
+  color: #ffffff;
+  background: #239b62;
+  border: 1px solid #239b62;
+  border-top-right-radius: 4px;
+}
+
+/* Error Bubble */
+
+.chat-message-row.error-msg .chat-bubble {
+  color: #a33d32;
+  background: #fff4f2;
+  border: 1px solid #f0d0ca;
+}
+
+/* ================= SOURCE TAG ================= */
+
+.chat-source-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 7px;
+  color: #66816d;
+  background: #edf5ee;
+  border-radius: 5px;
+  font-size: 0.66rem;
+}
+
+.chat-source-tag span {
+  color: #239b62;
+}
+
+/* ================= RETRY BUTTON ================= */
+
+.retry-chat-btn {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 7px 11px;
+  color: #a33d32;
+  background: #fff1ef;
+  border: 1px solid #f0c8c2;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.retry-chat-btn:hover {
+  background: #ffe3df;
+}
+
+/* ================= THINKING ANIMATION ================= */
+
+.chat-bubble.thinking {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 15px 18px;
+}
+
+.typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #239b62;
+  opacity: 0.4;
+  animation: pulseDot 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes pulseDot {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* ================= INPUT BAR ================= */
+
+.agriassist-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 20px 10px;
+  background: #ffffff;
+  border-top: 1px solid #e6eee7;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 10px;
+  padding: 0 13px;
+  background: #f7faf7;
+  border: 1px solid #dce7de;
+  border-radius: 11px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-input-wrapper:focus-within {
+  border-color: #239b62;
+  box-shadow: 0 0 0 3px rgba(35, 155, 98, 0.09);
+}
+
+.chat-input-icon {
+  color: #91a397;
+  font-size: 1.1rem;
+}
+
+.chat-input-wrapper input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 0;
+  color: #263d2e;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.87rem;
+}
+
+.chat-input-wrapper input::placeholder {
+  color: #98a79c;
+}
+
+/* ================= SEND BUTTON ================= */
+
+.chat-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 105px;
+  padding: 13px 18px;
+  color: #ffffff;
+  background: #239b62;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-send-btn:hover:not(:disabled) {
+  background: #187d4c;
+  box-shadow: 0 4px 12px rgba(35, 155, 98, 0.2);
+  transform: translateY(-1px);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================= INPUT FOOTER ================= */
+
+.chat-input-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 22px 13px;
+  color: #9aa99e;
+  font-size: 0.65rem;
+}
+
+/* ================= DISCLAIMER ================= */
+
+.agriassist-disclaimer-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 19px;
+  background: #edf5ee;
+  border: 1px solid #dceade;
+  border-left: 3px solid #239b62;
+  border-radius: 0 12px 12px 0;
+}
+
+.disclaimer-icon {
+  color: #239b62;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.agriassist-disclaimer-card strong {
+  display: block;
+  color: #385c40;
+  font-size: 0.82rem;
+  margin-bottom: 4px;
+}
+
+.agriassist-disclaimer-card p {
+  color: #718477;
+  font-size: 0.77rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1050px) {
+  .agriassist-layout {
+    grid-template-columns: minmax(250px, 290px) minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .agriassist-context-panel {
+    padding: 18px;
+  }
+
+  .agriassist-chat-topbar {
+    padding: 15px 17px;
+  }
+
+  .chat-model-info {
+    font-size: 0.64rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .agriassist-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .agriassist-context-panel {
+    padding: 22px;
+  }
+
+  .agriassist-chat-card {
+    min-height: 600px;
+  }
+
+  .agriassist-messages-container {
+    max-height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .agriassist-heading {
+    align-items: flex-start;
+  }
+
+  .agriassist-heading-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    font-size: 1.8rem;
+  }
+
+  .agriassist-heading p {
+    font-size: 0.88rem;
+  }
+
+  .agriassist-context-panel {
+    padding: 17px;
+  }
+
+  .agriassist-chat-card {
+    min-height: 560px;
+    border-radius: 14px;
+  }
+
+  .agriassist-chat-topbar {
+    padding: 13px;
+  }
+
+  .chat-profile-avatar {
+    width: 37px;
+    height: 37px;
+  }
+
+  .chat-model-info {
+    padding: 6px 7px;
+    font-size: 0.58rem;
+  }
+
+  .agriassist-messages-container {
+    padding: 15px 12px;
+    min-height: 380px;
+    max-height: 450px;
+    gap: 16px;
+  }
+
+  .chat-message-row {
+    max-width: 96%;
+    gap: 8px;
+  }
+
+  .chat-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .chat-bubble {
+    padding: 11px 13px;
+    font-size: 0.82rem;
+  }
+
+  .agriassist-input-bar {
+    padding: 12px 10px 8px;
+    gap: 7px;
+  }
+
+  .chat-input-wrapper {
+    padding: 0 9px;
+  }
+
+  .chat-input-wrapper input {
+    font-size: 0.78rem;
+  }
+
+  .chat-send-btn {
+    min-width: 76px;
+    padding: 12px 10px;
+    font-size: 0.76rem;
+  }
+
+  .chat-input-footer {
+    padding: 0 12px 12px;
+    font-size: 0.58rem;
+  }
+
+  .agriassist-disclaimer-card {
+    padding: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .agriassist-heading-icon {
+    display: none;
+  }
+
+  .chat-model-info {
+    display: none;
+  }
+
+  .chat-input-footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+.clear-chat-btn {
+  padding: 8px 14px;
+  border: 1px solid var(--green, #16a34a);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.clear-chat-btn:hover {
+  background: rgba(22, 163, 74, 0.12);
+}
+
+.clear-chat-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   AGRIASSIST - FULL WIDTH SIDE-BY-SIDE LAYOUT
+========================================= */
+
+.agriassist-page {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 24px;
+}
+
+.agriassist-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.8fr);
+  gap: 22px;
+  width: 100%;
+  max-width: none;
+  align-items: stretch;
+}
+
+/* Left suggested questions panel */
+.agriassist-prompts-panel {
+  width: 100%;
+  min-width: 0;
+  background: var(--surface, #f8fbf9);
+  border: 1px solid var(--border, #dce9df);
+  border-radius: 18px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.agriassist-prompts-section {
+  width: 100%;
+  min-width: 0;
+}
+
+.prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.prompt-chip-btn {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Right chat panel */
+.agriassist-chat-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  min-height: 650px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.agriassist-messages-container {
+  flex: 1;
+  min-height: 350px;
+  max-height: 65vh;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.agriassist-input-bar {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .agriassist-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .agriassist-chat-card {
+    min-height: 600px;
+  }
+
+  .agriassist-messages-container {
+    max-height: 55vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .agriassist-page {
+    padding: 12px;
+  }
+
+  .agriassist-layout {
+    gap: 14px;
+  }
+
+  .agriassist-prompts-panel {
+    padding: 14px;
+  }
+}

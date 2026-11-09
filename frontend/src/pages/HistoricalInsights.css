@@ -1,0 +1,460 @@
+/* =========================================
+   AgriSmart - Historical Insights
+   Light Sage Green Theme
+========================================= */
+
+.historical-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px;
+  background: #f1f6f2;
+  color: #243b2e;
+  box-sizing: border-box;
+}
+
+/* Page Heading */
+
+.historical-heading {
+  margin-bottom: 24px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  color: #239b62;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.historical-heading h1 {
+  color: #183b2a;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+}
+
+.historical-heading p {
+  color: #586e60;
+  font-size: 1.02rem;
+  max-width: 800px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Methodological Notice */
+
+.historical-separation-notice {
+  margin-bottom: 28px;
+  padding: 18px 22px;
+  background: #e5f2e9;
+  border: 1px solid #c6dfce;
+  border-left: 4px solid #239b62;
+  border-radius: 0 14px 14px 0;
+}
+
+.notice-pill {
+  display: inline-block;
+  padding: 4px 11px;
+  background: #d0ead9;
+  color: #167345;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  margin-bottom: 9px;
+}
+
+.historical-separation-notice p {
+  color: #405d49;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.historical-separation-notice strong {
+  color: #183b2a;
+}
+
+/* Filters Form */
+
+.historical-filters-form {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dce9df;
+  border-radius: 18px;
+  margin-bottom: 32px;
+  box-shadow: 0 5px 18px rgba(35, 85, 53, 0.04);
+}
+
+.filter-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.filter-inputs-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.filter-inputs-grid label span {
+  color: #294b36;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.filter-inputs-grid input,
+.filter-inputs-grid select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  color: #263d2e;
+  background: #f7faf7;
+  border: 1px solid #d4e3d7;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.filter-inputs-grid input::placeholder {
+  color: #8a9d8e;
+}
+
+.filter-inputs-grid select option {
+  color: #263d2e;
+  background: #ffffff;
+}
+
+.filter-inputs-grid input:focus,
+.filter-inputs-grid select:focus {
+  border-color: #239b62;
+  box-shadow: 0 0 0 3px rgba(35, 155, 98, 0.12);
+}
+
+.filter-inputs-grid input:disabled,
+.filter-inputs-grid select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Query Button */
+
+.historical-query-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 25px;
+  color: #ffffff;
+  background: #239b62;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.historical-query-btn:hover:not(:disabled) {
+  background: #187d4c;
+  box-shadow: 0 5px 15px rgba(35, 155, 98, 0.18);
+  transform: translateY(-1px);
+}
+
+.historical-query-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.query-btn-inner {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* Spinner */
+
+.mini-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: historical-spin 0.7s linear infinite;
+}
+
+@keyframes historical-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading State */
+
+.historical-loading {
+  padding: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #187d4c;
+  background: #e5f2e9;
+  border: 1px solid #c6dfce;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Content Layout */
+
+.historical-content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+  align-items: stretch;
+}
+
+.historical-chart-card {
+  min-width: 0;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dce9df;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(35, 85, 53, 0.04);
+}
+
+.card-top-meta h2 {
+  color: #183b2a;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.card-top-meta p {
+  color: #64796a;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+/* Chart */
+
+.chart-container-box {
+  width: 100%;
+  height: 360px;
+  min-width: 0;
+  margin-top: 12px;
+}
+
+.chart-axis-label {
+  fill: #586e60;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Empty Records */
+
+.empty-records-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 20px;
+  color: #64796a;
+  font-size: 0.9rem;
+  text-align: center;
+  background: #f7faf7;
+  border: 1px dashed #d4e3d7;
+  border-radius: 12px;
+}
+
+/* Custom Tooltip */
+
+.custom-chart-tooltip {
+  padding: 11px 15px;
+  background: #ffffff;
+  border: 1px solid #b8d9c3;
+  border-radius: 9px;
+  box-shadow: 0 8px 24px rgba(24, 59, 42, 0.12);
+}
+
+.tooltip-label {
+  color: #183b2a;
+  font-size: 0.82rem;
+  margin: 0 0 5px;
+}
+
+.tooltip-val {
+  color: #586e60;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.tooltip-val span {
+  color: #239b62;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+/* Data Table */
+
+.historical-table-card {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dce9df;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(35, 85, 53, 0.04);
+  margin-bottom: 28px;
+}
+
+.historical-table-card h3 {
+  color: #183b2a;
+  font-size: 1.15rem;
+  margin: 0 0 18px;
+}
+
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e2ece4;
+  border-radius: 10px;
+}
+
+.historical-data-table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+  text-align: left;
+  background: #ffffff;
+}
+
+.historical-data-table th,
+.historical-data-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #e5eee7;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  background: #ffffff;
+}
+
+.historical-data-table th {
+  background: #e5f2e9;
+  color: #187d4c;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.historical-data-table td {
+  color: #405449;
+}
+
+.historical-data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.historical-data-table tbody tr:hover td {
+  background: #f0f8f2;
+}
+
+.historical-data-table td strong {
+  color: #183b2a;
+}
+
+.table-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  padding: 4px 8px;
+  color: #187d4c;
+  background: #e0f3e6;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* Error Message */
+
+.historical-error-box {
+  padding: 15px 18px;
+  margin-bottom: 24px;
+  color: #a33d32;
+  background: #fff1ef;
+  border: 1px solid #f0c8c2;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Responsive Layout */
+
+@media (max-width: 1100px) {
+  .filter-inputs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .historical-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .historical-chart-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  .historical-page {
+    padding: 16px;
+  }
+
+  .historical-heading h1 {
+    font-size: 1.8rem;
+  }
+
+  .historical-heading p {
+    font-size: 0.92rem;
+  }
+
+  .historical-separation-notice {
+    padding: 15px;
+  }
+
+  .historical-filters-form {
+    padding: 17px;
+  }
+
+  .filter-inputs-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .historical-query-btn {
+    width: 100%;
+  }
+
+  .historical-chart-card {
+    padding: 16px;
+  }
+
+  .card-top-meta h2 {
+    font-size: 1.1rem;
+  }
+
+  .chart-container-box {
+    height: 320px;
+  }
+
+  .historical-table-card {
+    padding: 16px;
+  }
+}

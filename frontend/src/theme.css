@@ -1,0 +1,435 @@
+/* ==========================================================
+   AGRISENSE THEME & INTERNATIONALIZATION CONTROLS
+   Light & Dark Mode + Telugu/English Styling
+   ========================================================== */
+
+/* ---------------- Controls in Header & Auth ---------------- */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle-btn,
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border, #dfe8df);
+  background: var(--surface, #ffffff);
+  color: var(--text, #2c3e31);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.theme-toggle-btn:hover,
+.lang-toggle-btn:hover {
+  background: var(--surface-light, #f1f7f1);
+  border-color: #218f4e;
+  color: #176f3b;
+  transform: translateY(-1px);
+}
+
+.lang-toggle-btn .lang-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #eaf8ee;
+  color: #218f4e;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ---------------- Dark Theme Variables ---------------- */
+[data-theme="dark"] {
+  --bg: #0d1510;
+  --surface: #142018;
+  --surface-card: #16241a;
+  --surface-light: #1b2d20;
+  --surface-elevated: #223728;
+  --border: #233728;
+  --border-light: #2d4533;
+  --text: #e1eee4;
+  --text-muted: #9eb5a3;
+  --text-dim: #799480;
+  --text-bright: #f0faf3;
+  --green: #2ecc71;
+  --green-hover: #3ce082;
+  --green-dark: #27ae60;
+  --green-glow: rgba(46, 204, 113, 0.15);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.6);
+  --level1-text: #4ce58b;
+  --level1-bg: #12331d;
+  --level1-border: #1f5931;
+  --level2-text: #ffd166;
+  --level2-bg: #382c12;
+  --level2-border: #634e1c;
+  --level3-text: #ff7b72;
+  --level3-bg: #3d1717;
+  --level3-border: #6b2424;
+}
+
+/* ---------------- Dark Mode Component Overrides ---------------- */
+[data-theme="dark"] body {
+  background: #0d1510 !important;
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .app-shell {
+  background: #0d1510 !important;
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .app-sidebar {
+  background: #121c15 !important;
+  border-right-color: #233728 !important;
+}
+
+[data-theme="dark"] .sidebar-brand {
+  border-bottom-color: #233728 !important;
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .brand-mark {
+  background: #1b3323 !important;
+}
+
+[data-theme="dark"] .brand-copy strong {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .brand-copy small {
+  color: #879f8d !important;
+}
+
+[data-theme="dark"] .sidebar-link {
+  color: #a4baa9 !important;
+}
+
+[data-theme="dark"] .sidebar-link:hover {
+  background: #18281d !important;
+  color: #3ce082 !important;
+}
+
+[data-theme="dark"] .sidebar-link.active,
+[data-theme="dark"] .sidebar-link.route-active {
+  background: #1a3322 !important;
+  color: #4ce58b !important;
+  box-shadow: inset 0 0 0 1px #265435 !important;
+}
+
+[data-theme="dark"] .sidebar-bottom {
+  border-top-color: #233728 !important;
+}
+
+[data-theme="dark"] .sidebar-avatar {
+  background: #1b3323 !important;
+}
+
+[data-theme="dark"] .sidebar-farmer-copy strong {
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .sidebar-farmer-copy small {
+  color: #879f8d !important;
+}
+
+[data-theme="dark"] .app-main-column {
+  background: #0d1510 !important;
+}
+
+[data-theme="dark"] .app-topbar {
+  background: #121c15 !important;
+  border-bottom-color: #233728 !important;
+}
+
+[data-theme="dark"] .topbar-welcome strong {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .topbar-welcome span {
+  color: #9cb2a2 !important;
+}
+
+[data-theme="dark"] .topbar-logout {
+  background: #213225 !important;
+  border-color: #2e4433 !important;
+  color: #d1dfd5 !important;
+}
+
+[data-theme="dark"] .topbar-logout:hover {
+  background: #3a1c1c !important;
+  border-color: #612727 !important;
+  color: #ff8585 !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn,
+[data-theme="dark"] .lang-toggle-btn {
+  background: #1b2d20 !important;
+  border-color: #2d4734 !important;
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover,
+[data-theme="dark"] .lang-toggle-btn:hover {
+  background: #243c2b !important;
+  border-color: #3ce082 !important;
+  color: #3ce082 !important;
+}
+
+[data-theme="dark"] .lang-toggle-btn .lang-badge {
+  background: #1e3d27 !important;
+  color: #4ce58b !important;
+}
+
+/* ---------------- Dark Mode Pages ---------------- */
+[data-theme="dark"] .dashboard-page {
+  background: #0d1510 !important;
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .dashboard-heading h1 {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .dashboard-heading h1 span {
+  color: #3ce082 !important;
+}
+
+[data-theme="dark"] .dashboard-heading p {
+  color: #9eb5a3 !important;
+}
+
+[data-theme="dark"] .dashboard-eyebrow {
+  color: #3ce082 !important;
+}
+
+[data-theme="dark"] .dashboard-hero-card,
+[data-theme="dark"] .dashboard-panel,
+[data-theme="dark"] .dashboard-metric-card,
+[data-theme="dark"] .quick-action-link,
+[data-theme="dark"] .dashboard-bottom-note,
+[data-theme="dark"] .metric-card,
+[data-theme="dark"] .action-card,
+[data-theme="dark"] .workflow-card,
+[data-theme="dark"] .prediction-form-card,
+[data-theme="dark"] .prediction-result-card,
+[data-theme="dark"] .prediction-card,
+[data-theme="dark"] .prediction-context-box,
+[data-theme="dark"] .historical-chart-card,
+[data-theme="dark"] .historical-table-card,
+[data-theme="dark"] .historical-filters-form,
+[data-theme="dark"] .agriassist-context-panel,
+[data-theme="dark"] .agriassist-chat-card,
+[data-theme="dark"] .about-table-wrap,
+[data-theme="dark"] .about-module-card,
+[data-theme="dark"] .about-metric-card,
+[data-theme="dark"] .calibration-finding-card,
+[data-theme="dark"] .auth-card {
+  background: #142018 !important;
+  border: 1px solid #233728 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .metric-title,
+[data-theme="dark"] .quick-action-copy strong,
+[data-theme="dark"] .dashboard-bottom-note strong {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .metric-value {
+  color: #3ce082 !important;
+}
+
+[data-theme="dark"] .dashboard-metric-card p,
+[data-theme="dark"] .quick-action-copy small,
+[data-theme="dark"] .dashboard-bottom-note p,
+[data-theme="dark"] .analysis-empty-state p {
+  color: #9eb5a3 !important;
+}
+
+[data-theme="dark"] .panel-heading h2,
+[data-theme="dark"] .analysis-empty-state h3 {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .analysis-panel-footer,
+[data-theme="dark"] .quick-actions-footer {
+  border-top-color: #233728 !important;
+  color: #8da493 !important;
+}
+
+[data-theme="dark"] .empty-illustration-circle {
+  background: #1b2f21 !important;
+  color: #3ce082 !important;
+}
+
+[data-theme="dark"] .quick-action-link:hover {
+  background: #1b2d20 !important;
+  border-color: #2e4734 !important;
+}
+
+[data-theme="dark"] .bottom-note-link {
+  background: #1e3324 !important;
+  color: #3ce082 !important;
+  border-color: #2e4734 !important;
+}
+
+[data-theme="dark"] .prediction-heading h1,
+[data-theme="dark"] .historical-heading h1,
+[data-theme="dark"] .agriassist-heading h1,
+[data-theme="dark"] .about-hero h1 {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .prediction-heading p,
+[data-theme="dark"] .historical-heading p,
+[data-theme="dark"] .agriassist-heading p,
+[data-theme="dark"] .about-hero p {
+  color: #9eb5a3 !important;
+}
+
+[data-theme="dark"] .prediction-input-wrap input,
+[data-theme="dark"] .prediction-input-wrap select,
+[data-theme="dark"] .context-inputs-row input,
+[data-theme="dark"] .context-inputs-row select,
+[data-theme="dark"] .filter-inputs-grid input,
+[data-theme="dark"] .filter-inputs-grid select,
+[data-theme="dark"] .context-inputs-column input,
+[data-theme="dark"] .context-inputs-column select,
+[data-theme="dark"] .agriassist-chat-input input,
+[data-theme="dark"] .auth-field input {
+  background: #19271e !important;
+  color: #edf5ef !important;
+  border-color: #2a4231 !important;
+}
+
+[data-theme="dark"] .prediction-input-wrap input:focus,
+[data-theme="dark"] .auth-field input:focus {
+  border-color: #3ce082 !important;
+  box-shadow: 0 0 0 3px rgba(60, 224, 130, 0.2) !important;
+}
+
+[data-theme="dark"] .prediction-field-group label,
+[data-theme="dark"] .prediction-field-group .field-label-text,
+[data-theme="dark"] .auth-field label {
+  color: #d1e2d6 !important;
+}
+
+[data-theme="dark"] .prediction-field-reference-range,
+[data-theme="dark"] .field-unit,
+[data-theme="dark"] .prediction-help-text,
+[data-theme="dark"] .context-box-desc,
+[data-theme="dark"] .historical-separation-notice {
+  color: #8da493 !important;
+}
+
+/* Chat Dark Mode */
+[data-theme="dark"] .agriassist-messages-container {
+  background: #111a13 !important;
+}
+
+[data-theme="dark"] .chat-bubble {
+  background: #1a291f !important;
+  color: #e1eee4 !important;
+  border-color: #273e2f !important;
+}
+
+[data-theme="dark"] .chat-message-row.user .chat-bubble {
+  background: #193823 !important;
+  color: #4ce58b !important;
+  border-color: #245233 !important;
+}
+
+/* Auth Page Dark Mode */
+[data-theme="dark"] .auth-page {
+  background: #0d1510 !important;
+}
+
+[data-theme="dark"] .auth-heading h1 {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .auth-tabs {
+  background: #18281d !important;
+}
+
+[data-theme="dark"] .auth-tabs button {
+  color: #9eb5a3 !important;
+}
+
+[data-theme="dark"] .auth-tabs button.active {
+  background: #243c2c !important;
+  color: #4ce58b !important;
+}
+
+[data-theme="dark"] .auth-side {
+  background: linear-gradient(145deg, #122116, #16261a 65%, #101c13) !important;
+  border-color: #233728 !important;
+}
+
+[data-theme="dark"] .auth-side h2 {
+  color: #f0faf3 !important;
+}
+
+[data-theme="dark"] .auth-feature strong {
+  color: #d8e8dd !important;
+}
+
+[data-theme="dark"] .auth-feature p {
+  color: #9cb2a2 !important;
+}
+
+[data-theme="dark"] .auth-disclaimer-box {
+  background: rgba(22, 36, 26, 0.7) !important;
+  border-color: #294230 !important;
+}
+
+[data-theme="dark"] .auth-disclaimer-box strong {
+  color: #4ce58b !important;
+}
+
+[data-theme="dark"] .auth-disclaimer-box p {
+  color: #9eb5a3 !important;
+}
+
+/* Tables and Charts in Dark Mode */
+[data-theme="dark"] table,
+[data-theme="dark"] .historical-table {
+  color: #e1eee4 !important;
+}
+
+[data-theme="dark"] .historical-table th,
+[data-theme="dark"] .about-spec-table th {
+  background: #1c2e21 !important;
+  color: #4ce58b !important;
+  border-bottom-color: #2c4232 !important;
+}
+
+[data-theme="dark"] .historical-table td,
+[data-theme="dark"] .about-spec-table td {
+  border-bottom-color: #223727 !important;
+  color: #d8e8dd !important;
+}
+
+[data-theme="dark"] .historical-table tr:hover td {
+  background: #182a1d !important;
+}
+
+/* Notice and Alerts */
+[data-theme="dark"] .about-responsible-box,
+[data-theme="dark"] .home-responsible-notice {
+  background: #162a1c !important;
+  color: #c5ded0 !important;
+  border-left-color: #3ce082 !important;
+}

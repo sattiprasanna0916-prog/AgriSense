@@ -1,0 +1,21 @@
+/* Final light-theme pass: intentionally overrides the legacy dark component skins. */
+.prediction-page,.historical-page,.agriassist-page,.about-page{color:#2c3e31}
+.prediction-heading h1,.historical-heading h1,.agriassist-heading h1,.about-hero h1{color:#263b2d}
+.prediction-heading p,.historical-heading p,.agriassist-heading p{color:#68786c}
+.prediction-form-card,.prediction-result-card,.prediction-card,.prediction-context-box,.historical-chart-card,.historical-table-card,.historical-filters-form,.agriassist-context-panel,.agriassist-chat-card,.about-table-wrap,.about-module-card,.about-metric-card,.calibration-finding-card{background:#fff!important;border:1px solid #e2eae2!important;box-shadow:0 3px 12px rgba(36,65,42,.045)!important}
+.prediction-input-wrap input,.prediction-input-wrap select,.context-inputs-row input,.context-inputs-row select,.filter-inputs-grid input,.filter-inputs-grid select,.context-inputs-column input,.context-inputs-column select,.agriassist-chat-input input{background:#f8faf8!important;color:#304035!important;border-color:#dfe8df!important}
+.prediction-field-group,.prediction-field-group label{color:#3e5042}
+.prediction-field-group .field-label-text{color:#405245}
+.prediction-field-reference-range,.field-unit{color:#839187}
+.prediction-primary-btn,.historical-query-btn{background:#218f4e!important;color:#fff!important;border:0!important}
+.prediction-error-box,.historical-error-box{background:#fff1ef!important;color:#a43e36!important}
+.prediction-help-text,.context-box-desc,.historical-separation-notice{color:#68786c}
+.reliability-banner.level1,.reliability-banner.high{background:#eaf8ee!important;color:#246b3c!important;border-color:#c8e8d0!important}
+.reliability-banner.level2,.reliability-banner.medium{background:#fff8e4!important;color:#8b650b!important;border-color:#f1e0ad!important}
+.reliability-banner.level3,.reliability-banner.low{background:#fff0ef!important;color:#9b3935!important;border-color:#f0c9c5!important}
+.about-responsible-box,.home-responsible-notice{background:#eff8f0!important;color:#3b5140!important}
+.about-spec-table th{background:#edf6ee!important;color:#267d45!important}
+.about-spec-table td,.about-spec-table th{border-bottom-color:#e5ece5!important}
+.chat-bubble{background:#f1f7f1!important;color:#344638!important;border-color:#e1ebe1!important}
+.chat-message-row.user .chat-bubble{background:#e5f5e9!important;color:#285238!important}
+.agriassist-messages-container{background:#fbfdfb!important}
